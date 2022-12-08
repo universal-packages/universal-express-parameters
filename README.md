@@ -91,6 +91,24 @@ app.use(parameters())
 // > 1
 ```
 
+## injectParameters()
+
+To only inject the parameters object into the request and don't behave as middle ware use this method. In case you are doing some custom middleware.
+
+```js
+import { injectParameters } from '@universal-packages/express-parameters'
+import express from 'express'
+
+const app = express()
+
+app.use((request, response, next) => {
+  injectParameters(request)
+  next()
+})
+
+// > 1
+```
+
 ## Typescript
 
 This library is developed in TypeScript and shipped fully typed.

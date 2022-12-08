@@ -5,8 +5,6 @@ import fetch from 'node-fetch'
 import { parameters } from '../src'
 
 const port = 4000 + Number(process.env['JEST_WORKER_ID'])
-
-let app: Express
 let server: Server
 
 async function startServer(app: Express): Promise<void> {
@@ -25,12 +23,14 @@ describe('parameters-middleware', (): void => {
       const app = express()
       let instance: Parameters
 
+      app.use(json())
+
       app.get('/:id', parameters('join'), (request: Request, response: Response) => {
         instance = request.parameters
         response.end()
       })
 
-      app.post('/:id', json(), parameters('join'), (request: Request, response: Response) => {
+      app.post('/:id', parameters('join'), (request: Request, response: Response) => {
         instance = request.parameters
         response.end()
       })

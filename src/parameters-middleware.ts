@@ -3,7 +3,7 @@ import { NextFunction, Request, RequestHandler, Response } from 'express'
 import { UnionKind } from './types'
 
 export function parameters(union: UnionKind = 'body'): RequestHandler {
-  return (request: Request, _response: Response, next: NextFunction): void => {
+  return function parameters(request: Request, _response: Response, next: NextFunction): void {
     injectParameters(request, union)
     next()
   }

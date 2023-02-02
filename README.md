@@ -14,7 +14,8 @@ npm install @universal-packages/express-parameters
 npm install express
 ```
 
-## parameters middleware
+## Middleware
+#### **`parameters([unionKind])`**
 
 Unites request relevant attributes to set a Parameters object in the request to pass to the following handlers.
 
@@ -27,7 +28,7 @@ const app = express()
 app.use(parameters())
 ```
 
-### Union kind
+#### Union kind
 
 By default the parameters middleware will use the request `body` as a subject for the `Parameters` object, you can pass another strategy depending your needs. For example:
 
@@ -59,7 +60,7 @@ app.use(parameters('params-body'))
 - **`params`**
   Uses `params` as the subject.
 
-### express params
+## express params
 
 In order for the middleware to access the params request object, it needs to be used as route handler.
 
@@ -76,7 +77,7 @@ app.get('/user/:id', parameters('join'), (request) => {
 // > 1
 ```
 
-### express body
+## express body
 
 In order for the middleware to access the body request object, it needs to be previously parsed as `json`.
 
@@ -91,7 +92,8 @@ app.use(parameters())
 // > 1
 ```
 
-## injectParameters()
+## Global methods
+#### **`injectParameters(request: Request)`**
 
 To only inject the parameters object into the request and don't behave as middle ware use this method. In case you are doing some custom middleware.
 

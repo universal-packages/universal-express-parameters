@@ -1,7 +1,8 @@
 import { Parameters } from '@universal-packages/parameters'
-import express, { Express, json, Request, Response } from 'express'
+import express, { Express, Request, Response, json } from 'express'
 import { Server } from 'http'
 import fetch from 'node-fetch'
+
 import { parameters } from '../src'
 
 const port = 4000 + Number(process.env['JEST_WORKER_ID'])

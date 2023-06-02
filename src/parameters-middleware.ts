@@ -1,5 +1,6 @@
 import { Parameters } from '@universal-packages/parameters'
 import { NextFunction, Request, RequestHandler, Response } from 'express'
+
 import { UnionKind } from './types'
 
 export function parameters(union: UnionKind = 'body'): RequestHandler {

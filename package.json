@@ -15,7 +15,7 @@
     "format": "prettier --write \"./{src,tests}/**/*.{ts,tsx,js,jsx,json}\""
   },
   "dependencies": {
-    "@universal-packages/parameters": "^1.0.3"
+    "@universal-packages/parameters": "^1.1.0"
   },
   "peerDependencies": {
     "express": "^4.18.2"

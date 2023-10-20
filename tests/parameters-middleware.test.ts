@@ -1,7 +1,6 @@
 import { Parameters } from '@universal-packages/parameters'
 import express, { Express, Request, Response, json } from 'express'
 import { Server } from 'http'
-import fetch from 'node-fetch'
 
 import { parameters } from '../src'
 
@@ -38,21 +37,17 @@ describe('parameters-middleware', (): void => {
 
       await startServer(app)
 
-      await fetch(`http://localhost:${port}/18?extra=123`)
+      await fGet('18?extra=123')
 
       expect(instance).toBeInstanceOf(Parameters)
       expect(instance.subject).toEqual({ id: '18', extra: '123' })
 
-      await fetch(`http://localhost:${port}/18?extra=123`, {
-        method: 'POST',
-        headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify({ part: 1 })
-      })
+      await fPost('18?extra=123', { part: 1 })
 
       expect(instance).toBeInstanceOf(Parameters)
       expect(instance.subject).toEqual({ id: '18', extra: '123', part: 1 })
 
-      await fetch(`http://localhost:${port}/18?extra=123`, { method: 'POST' })
+      await fPost('18?extra=123')
 
       expect(instance).toBeInstanceOf(Parameters)
       expect(instance.subject).toEqual({ id: '18', extra: '123' })
@@ -76,21 +71,17 @@ describe('parameters-middleware', (): void => {
 
       await startServer(app)
 
-      await fetch(`http://localhost:${port}/18?extra=123`)
+      await fGet('18?extra=123')
 
       expect(instance).toBeInstanceOf(Parameters)
       expect(instance.subject).toEqual({ params: { id: '18' }, query: { extra: '123' } })
 
-      await fetch(`http://localhost:${port}/18?extra=123`, {
-        method: 'POST',
-        headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify({ part: 1 })
-      })
+      await fPost('18?extra=123', { part: 1 })
 
       expect(instance).toBeInstanceOf(Parameters)
       expect(instance.subject).toEqual({ params: { id: '18' }, query: { extra: '123' }, body: { part: 1 } })
 
-      await fetch(`http://localhost:${port}/18?extra=123`, { method: 'POST' })
+      await fPost('18?extra=123')
 
       expect(instance).toBeInstanceOf(Parameters)
       expect(instance.subject).toEqual({ params: { id: '18' }, query: { extra: '123' }, body: {} })
@@ -114,21 +105,17 @@ describe('parameters-middleware', (): void => {
 
       await startServer(app)
 
-      await fetch(`http://localhost:${port}/18?extra=123`)
+      await fGet('18?extra=123')
 
       expect(instance).toBeInstanceOf(Parameters)
       expect(instance.subject).toEqual({})
 
-      await fetch(`http://localhost:${port}/18?extra=123`, {
-        method: 'POST',
-        headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify({ part: 1 })
-      })
+      await fPost('18?extra=123', { part: 1 })
 
       expect(instance).toBeInstanceOf(Parameters)
       expect(instance.subject).toEqual({ part: 1 })
 
-      await fetch(`http://localhost:${port}/18?extra=123`, { method: 'POST' })
+      await fPost('18?extra=123')
 
       expect(instance).toBeInstanceOf(Parameters)
       expect(instance.subject).toEqual({})
@@ -152,21 +139,17 @@ describe('parameters-middleware', (): void => {
 
       await startServer(app)
 
-      await fetch(`http://localhost:${port}/18?extra=123`)
+      await fGet('18?extra=123')
 
       expect(instance).toBeInstanceOf(Parameters)
       expect(instance.subject).toEqual({ id: '18' })
 
-      await fetch(`http://localhost:${port}/18?extra=123`, {
-        method: 'POST',
-        headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify({ part: 1 })
-      })
+      await fPost('18?extra=123', { part: 1 })
 
       expect(instance).toBeInstanceOf(Parameters)
       expect(instance.subject).toEqual({ id: '18', part: 1 })
 
-      await fetch(`http://localhost:${port}/18?extra=123`, { method: 'POST' })
+      await fPost('18?extra=123')
 
       expect(instance).toBeInstanceOf(Parameters)
       expect(instance.subject).toEqual({ id: '18' })
@@ -190,21 +173,17 @@ describe('parameters-middleware', (): void => {
 
       await startServer(app)
 
-      await fetch(`http://localhost:${port}/18?extra=123`)
+      await fGet('18?extra=123')
 
       expect(instance).toBeInstanceOf(Parameters)
       expect(instance.subject).toEqual({ extra: '123' })
 
-      await fetch(`http://localhost:${port}/18?extra=123`, {
-        method: 'POST',
-        headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify({ part: 1 })
-      })
+      await fPost('18?extra=123', { part: 1 })
 
       expect(instance).toBeInstanceOf(Parameters)
       expect(instance.subject).toEqual({ part: 1, extra: '123' })
 
-      await fetch(`http://localhost:${port}/18?extra=123`, { method: 'POST' })
+      await fPost('18?extra=123')
 
       expect(instance).toBeInstanceOf(Parameters)
       expect(instance.subject).toEqual({ extra: '123' })
@@ -228,21 +207,17 @@ describe('parameters-middleware', (): void => {
 
       await startServer(app)
 
-      await fetch(`http://localhost:${port}/18?extra=123`)
+      await fGet('18?extra=123')
 
       expect(instance).toBeInstanceOf(Parameters)
       expect(instance.subject).toEqual({ extra: '123' })
 
-      await fetch(`http://localhost:${port}/18?extra=123`, {
-        method: 'POST',
-        headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify({ part: 1 })
-      })
+      await fPost('18?extra=123', { part: 1 })
 
       expect(instance).toBeInstanceOf(Parameters)
       expect(instance.subject).toEqual({ extra: '123' })
 
-      await fetch(`http://localhost:${port}/18?extra=123`, { method: 'POST' })
+      await fPost('18?extra=123')
 
       expect(instance).toBeInstanceOf(Parameters)
       expect(instance.subject).toEqual({ extra: '123' })
@@ -266,21 +241,17 @@ describe('parameters-middleware', (): void => {
 
       await startServer(app)
 
-      await fetch(`http://localhost:${port}/18?extra=123`)
+      await fGet('18?extra=123')
 
       expect(instance).toBeInstanceOf(Parameters)
       expect(instance.subject).toEqual({ id: '18', extra: '123' })
 
-      await fetch(`http://localhost:${port}/18?extra=123`, {
-        method: 'POST',
-        headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: '18' })
-      })
+      await fPost('18?extra=123', { part: 1 })
 
       expect(instance).toBeInstanceOf(Parameters)
       expect(instance.subject).toEqual({ id: '18', extra: '123' })
 
-      await fetch(`http://localhost:${port}/18?extra=123`, { method: 'POST' })
+      await fPost('18?extra=123')
 
       expect(instance).toBeInstanceOf(Parameters)
       expect(instance.subject).toEqual({ id: '18', extra: '123' })
@@ -304,21 +275,17 @@ describe('parameters-middleware', (): void => {
 
       await startServer(app)
 
-      await fetch(`http://localhost:${port}/18?extra=123`)
+      await fGet('18?extra=123')
 
       expect(instance).toBeInstanceOf(Parameters)
       expect(instance.subject).toEqual({ id: '18' })
 
-      await fetch(`http://localhost:${port}/18?extra=123`, {
-        method: 'POST',
-        headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: '18' })
-      })
+      await fPost('18?extra=123', { part: 1 })
 
       expect(instance).toBeInstanceOf(Parameters)
       expect(instance.subject).toEqual({ id: '18' })
 
-      await fetch(`http://localhost:${port}/18?extra=123`, { method: 'POST' })
+      await fPost('18?extra=123')
 
       expect(instance).toBeInstanceOf(Parameters)
       expect(instance.subject).toEqual({ id: '18' })

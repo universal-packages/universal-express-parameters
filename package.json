@@ -16,7 +16,7 @@
     "update-universal-dependencies": "umaintenance update-universal-dependencies"
   },
   "dependencies": {
-    "@universal-packages/parameters": "^1.1.0"
+    "@universal-packages/parameters": "^1.1.2"
   },
   "peerDependencies": {
     "express": "^4.18.2"
